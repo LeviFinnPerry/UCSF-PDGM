@@ -6,6 +6,8 @@
 
 ## Problem
 
+TODO: About the dataset
+
 1.  Classification:
     -   Detections of tumour in each slice using `is_tumorous`
 2.  Segmentation:
@@ -53,7 +55,9 @@ All patients have a confirmed diagnosis, after removing missing values there is 
 
 ## Baseline
 
-Logistic regression on flattened pixels (`t1`, `t1c`, `t2`) and patient metadata (`sex`, `age`) to predict `is_tumorous`.
+To find the baseline accuracy without a model: Logistic regression on flattened pixels (`t1`, `t1c`, `t2`) and patient metadata (`sex`, `age`) to predict `is_tumorous`.
+
+TODO: Baseline Model Structure
 
 ## Metric
 
