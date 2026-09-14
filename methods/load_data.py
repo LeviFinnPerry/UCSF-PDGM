@@ -5,11 +5,10 @@ from sklearn.model_selection import train_test_split
 
 
 SEED = 1606009
-PIXEL_IMG_SIZE = 32
 
 def load_mini_ucsf():
     print("loading dataset...")
-    ds = load_dataset("chehablab/UCSF_PDGM", split="train[:18100]")
+    ds = load_dataset("chehablab/UCSF_PDGM", split="train[:18100]", keep_in_memory=True)
     df = pd.DataFrame(ds, columns=["volume_id", "slice_id", "t1", "t1c", "t2", "tumor_mask", "is_tumorous", "sex", "age"])
     df = df.dropna(subset=["age"])
     df["sex"] = (df["sex"] == "M").astype(np.float32)
@@ -94,5 +93,5 @@ def load_and_clean_data(mini=False, model=False):
         return combine_all_meta_pixel(y_train_meta, y_train_pixel, y_val_meta, y_val_pixel, y_test_meta, y_test_pixel,
                            x_train_meta, x_train_pixel, x_val_meta, x_val_pixel, x_test_meta, x_test_pixel)
     else:
-        return x_train_meta, y_train_meta, x_train_pixel, y_train_pixel, x_val_meta, y_val_meta, x_val_pixel, y_val_pixel, x_test_meta, y_test_meta, x_test_pixel, y_test_pixel
+        return x_train_meta, y_train_meta, x_train_pixel, x_test_meta, y_test_meta, x_test_pixel
     
