@@ -42,7 +42,7 @@ TODO: About the dataset
 
 ### Tumour Grades
 
-| Tumour Region of Interest | Labels        |
+| Tumour Region of Interest | Values        |
 |---------------------------|---------------|
 | No Tumour                 | `0`           |
 | Whole Tumour              | `1`, `2`, `4` |
