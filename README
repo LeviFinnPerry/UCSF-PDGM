@@ -4,13 +4,6 @@
 |------------------------|------------------------|------------------------|
 | ![](images/paste-2.jpeg) | ![](images/paste-3.jpeg) | ![](images/paste-4.jpeg) |
 
-## Problem
-
-1.  Classification:
-    -   Detections of tumour in each slice using `is_tumorous`
-2.  Segmentation:
-    -   Pixel localisation using `tumor_mask`.
-
 ## Data Structure
 
 ### Dataset
@@ -50,25 +43,3 @@
 All patients have a confirmed diagnosis, after removing missing values there is 414 patients x 155 slices = 64170 slices. `is_tumorous` varies per slice with 38,715 no tumour slices and 25,455 tumour slices.
 
 [UCSF_PDGM Dataset](https://huggingface.co/datasets/chehablab/UCSF_PDGM) - Hugging Face
-
-## Baseline
-
-Logistic regression on flattened pixels (`t1`, `t1c`, `t2`) and patient metadata (`sex`, `age`) to predict `is_tumorous`.
-
-## Metric
-
--   Classification: AUC (Area Under Curve)
-
--   Segmentation: IOU (Intersection Over Union)
-
-## Risk
-
-The primary risk is data leakage at the patient level as each patient has 155 slices, therefore the data must be split by `volume_id` not `slice_id`. `tumor_type` and `who_grade` will be excluded from the model input features as these are consistent across whole patient information rather than on the individual slices.
-
-## Team
-
-Individual.
-
-## AI Tools
-
-I will try use a combination of LLM models including the Ollama qwen3:1.7b and trialing Claude Sonnet 5 depending on the depth of questions or errors encountered.
